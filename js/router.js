@@ -73,7 +73,7 @@ async handleRoute() {
         if (window.navbarManager) {
             window.navbarManager.updateTitle(route.title);
         }
-        document.title = `도구 모음`;
+        document.title = '도구 모음';
 
         // CSS 로드
         if (route.styles) {
