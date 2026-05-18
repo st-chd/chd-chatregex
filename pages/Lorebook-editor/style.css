@@ -1042,3 +1042,128 @@
     background: var(--btn-1);
     color: white;
 }
+
+/* ===== MOBILE PREVIEW ADDITIONAL STYLES ===== */
+.mobile-fab-save {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--btn-1);
+    color: white;
+    font-size: 26px;
+    border: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    z-index: 90; /* 모달(999) 및 모바일 사이드바(99)보다 아래로 내려서 겹침 방지 */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.mobile-fab-save:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+    /* 첫줄 제목 최상단 배치 */
+    .editor-row {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 12px;
+    }
+    .editor-row .form-group:nth-child(3) {
+        /* 제목 폼 그룹 (3번째 위치함) */
+        grid-column: 1 / -1;
+        grid-row: 1;
+        margin-bottom: 0 !important;
+    }
+    .editor-row .form-group:nth-child(1) {
+        /* 순서 폼 그룹 */
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+        margin-bottom: 0 !important;
+    }
+    .editor-row .seq-index-input {
+        max-width: none !important;
+        width: 100% !important;
+    }
+    .editor-row .enable-toggle {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: flex-end !important;
+        justify-content: center;
+        height: 38px;
+        margin-bottom: 0;
+    }
+
+    /* 플로팅 라벨 추가 */
+    .mobile-fab-save {
+        display: flex;
+    }
+
+    /* 모달 형태 개선 (Bottom Sheet 느낌) */
+    .modal-container {
+        width: 100%;
+        max-width: 100%;
+        height: 90vh; /* Bottom sheet */
+        border-radius: 20px 20px 0 0 !important;
+        display: flex;
+        flex-direction: column;
+        margin-top: auto; /* 화면 아래로 붙이기 */
+    }
+    .modal-overlay {
+        align-items: flex-end !important; /* 하단 정렬 */
+        padding-top: 10vh !important; /* 상단 여백 보장 */
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .modal-body {
+        flex: 1;
+        max-height: none !important;
+    }
+    .modal-footer {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+    }
+    /* 번역/변환 탭 버튼 50% 분할 */
+    #translateConvertModal .modal-header > div {
+        flex-wrap: nowrap !important;
+        width: 100%;
+    }
+    #tcTranslateTab, #tcConvertTab {
+        flex: 1;
+        min-width: 0 !important;
+        padding: 10px 5px !important;
+        font-size: 13px;
+    }
+
+    /* 패널 간격 및 패딩 여유있게 (오터치 방지) */
+    .panel-title {
+        padding: 16px 18px !important; 
+        font-size: 13px !important;
+    }
+    .form-group {
+        margin-bottom: 16px !important; 
+    }
+    .form-row .form-group {
+        margin-bottom: 0 !important;
+    }
+
+    /* 내용(Content) 라벨 영역 한줄씩 깔끔하게 정렬 */
+    .label-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .label-row > div {
+        width: 100%;
+        justify-content: space-between; 
+    }
+}

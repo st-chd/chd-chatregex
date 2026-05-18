@@ -1400,3 +1400,80 @@ function resetContent() {
         el.style.height = '';
     }
 }
+
+// ===== 추가 커스텀 기능: 복사 / 삭제 / 키워드 번역 카운트 =====
+function duplicateCurrentEntry() {
+    if (currentUid === null || !currentFileName) return;
+    const loreData = getCurrentLoreData(); // from script.js
+    const sourceEntry = loreData.entries[currentUid];
+    
+    const newEntry = JSON.parse(JSON.stringify(sourceEntry));
+    const targetUids = Object.keys(loreData.entries).map(Number);
+    const nextUid = targetUids.length > 0 ? Math.max(...targetUids) + 1 : 0;
+    
+    newEntry.uid = nextUid;
+    newEntry.comment = (newEntry.comment || '새 항목') + ' (복사본)';
+    // 순서를 현재 항목의 바로 다음으로 지정
+    const newDisplayIndex = sourceEntry.displayIndex !== undefined ? sourceEntry.displayIndex + 0.5 : nextUid;
+    newEntry.displayIndex = newDisplayIndex;
+    
+    loreData.entries[nextUid] = newEntry;
+    
+    // 다시 정수로 재정렬
+    const entries = Object.values(loreData.entries).sort((a, b) => (a.displayIndex ?? 0) - (b.displayIndex ?? 0));
+    entries.forEach((e, i) => e.displayIndex = i);
+    
+    renderList(document.getElementById('searchInput').value);
+    selectEntry(nextUid);
+}
+
+function deleteCurrentEntry() {
+    if (currentUid === null || !currentFileName) return;
+    if(!confirm('현재 항목을 삭제하시겠습니까?')) return;
+    const loreData = getCurrentLoreData();
+    delete loreData.entries[currentUid];
+    
+    currentUid = null;
+    document.getElementById('emptyState').style.display = 'flex';
+    document.getElementById('editorContent').style.display = 'none';
+    renderList(document.getElementById('searchInput').value);
+}
+
+function updateTranslatedCount() {
+    const list = document.getElementById('kwTranslatedList');
+    const countSpan = document.getElementById('kwTranslatedCount');
+    if(list && countSpan) {
+        const val = list.value;
+        const count = val ? val.trim().split(/\r?\n/).filter(line => line.trim() !== '').length : 0;
+        countSpan.textContent = '(입력된 키워드 ' + count + '개)';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 번역 키워드 실시간 카운트
+    const list = document.getElementById('kwTranslatedList');
+    if(list) {
+        list.addEventListener('input', updateTranslatedCount);
+        updateTranslatedCount();
+    }
+    
+    // 모달 오버레이 바깥 영역 클릭 시 닫기
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if(e.target === this) {
+                if(typeof closeModal === 'function') {
+                    closeModal(this.id);
+                } else {
+                    this.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+setInterval(() => {
+    const tcModal = document.getElementById('translateConvertModal');
+    if (tcModal && tcModal.style.display === 'flex') {
+        updateTranslatedCount();
+    }
+}, 1000);

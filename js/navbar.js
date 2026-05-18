@@ -67,8 +67,8 @@ const TOOLS_DATA = [
                         <li>디자인을 입력하세요.</li>
                         <li>실시간으로 결과를 확인할 수 있습니다.</li>
                       </ol>`
-    },
-    {
+    }
+    /* {
         title: "텍스트 비교",
         path: "pages/Text-Comparison/index.html",
         helpTitle: "📝 텍스트 비교",
@@ -86,13 +86,13 @@ const TOOLS_DATA = [
                         <li>텍스트의 변경사항을 확인하고 싶다면 [비교하기]를 누르세요.</li>
                       </ul>`
     },
-    /* {
+     {
         title: "토큰 계산기",
         path: "pages/token-calculator/index.html",
         helpTitle: "🪙 토큰 계산기",
         helpDescription: "입력 텍스트의 토큰 수를 추정하고, Gemini API 비용을 비교합니다.",
         helpContent: `...`
-    },*/
+    },
     {
         title: "로어북 편집기",
         path: "pages/Lorebook-editor/index.html",
@@ -139,7 +139,7 @@ const TOOLS_DATA = [
                           </ul>
                         </li>
                       </ol>`
-    }
+    }*/
 ];
 
 class NavbarManager {
