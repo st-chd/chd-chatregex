@@ -90,16 +90,16 @@
 
 <!-- 찾기/바꾸기 -->
 <div class="find-container">
-<input type="text" id="find-query" class="find-input" placeholder="찾기 (Enter ↓, Shift+Enter ↑)">
-<button class="search-btn" onclick="findText('prev')">↑</button>
-<button class="search-btn" onclick="findText('next')">↓</button>
+<input type="text" id="find-query" class="find-input" placeholder="검색어 입력...">
+<button class="search-btn" onclick="findText('prev')">이전</button>
+<button class="search-btn" onclick="findText('next')">다음</button>
 <button class="search-btn" id="toggle-replace-btn" onclick="toggleReplaceBox()">바꾸기</button>
 </div>
 <div class="replace-box" id="replace-box">
 <div class="find-container">
-<input type="text" id="replace-query" class="find-input" placeholder="바꿀 내용 (Enter로 실행)">
-<button class="search-btn" onclick="replaceOne()">하나</button>
-<button class="search-btn" onclick="replaceAll()">전체</button>
+<input type="text" id="replace-query" class="find-input" placeholder="바꿀 내용...">
+<button class="search-btn" onclick="replaceOne()">하나만</button>
+<button class="search-btn" onclick="replaceAll()">전체 바꾸기</button>
 </div>
 </div>
 <textarea id="template-input" placeholder="<div>{{data.name}}</div>"></textarea>
@@ -138,6 +138,7 @@
     <!-- 공통 스크립트 -->
     <script src="../../js/theme.js"></script>
     <script src="../../js/navbar.js"></script>
+    <script src="../../js/preview-sanitize.js"></script>
     <!-- 개별 스크립트 -->
     <script src="presets.js"></script>
     <script src="script.js"></script>

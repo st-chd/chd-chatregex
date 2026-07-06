@@ -58,6 +58,12 @@
         <!-- 에디터 영역 -->
         <div class="container">
             <div class="editor-side" id="editor-side">
+                <div class="regex-stage-tabs">
+                    <button class="stage-add-tab" type="button">+</button>
+                    <div id="stage-tabs" class="stage-tabs"></div>
+                    <div id="stage-tab-actions" class="stage-tab-actions"></div>
+                </div>
+                <div id="stage-edit-controls" class="stage-edit-controls"></div>
                 <div class="input-group">
                     <div class="label-row">
                         <label onclick="toggleSection('raw-input-section')" style="cursor: pointer;">1. 출력 텍스트
@@ -66,14 +72,14 @@
                         <button class="copy-btn" onclick="copyToClipboard('raw-input', this)">📋 복사</button>
                     </div>
                     <div id="raw-input-section">
-                        <textarea id="raw-input" placeholder="원본 텍스트를 입력하세요..."
+                        <textarea id="raw-input" placeholder="원본 텍스트를 입력하세요."
                             oninput="autoResizeTextarea(this)"></textarea>
                     </div>
                 </div>
 
                 <div class="input-group">
                     <div class="label-row">
-                        <label onclick="toggleSection('regex-input-section')" style="cursor: pointer;">2. 정규식 입력
+                        <label onclick="toggleSection('regex-input-section')" style="cursor: pointer;">2.1. 정규식 입력
                             <span id="regex-input-toggle-icon">··· [접기]</span>
                         </label>
                         <button class="copy-btn" onclick="copyToClipboard('regex-input', this)">📋 복사</button>
@@ -81,6 +87,13 @@
                     <div id="regex-input-section">
                         <textarea id="regex-input" placeholder="정규식을 입력하세요."
                             oninput="autoResizeTextarea(this)"></textarea>
+                        <label class="trim-label" onclick="toggleTrimSection()" style="cursor: pointer;">2.2. 트림아웃 입력
+                            <span id="trim-input-toggle-icon">··· [펼치기]</span>
+                        </label>
+                        <div id="trim-input-section" class="collapsed">
+                            <textarea id="trim-input" class="trim-input" placeholder="매칭값에서 제거할 문자열을 한 줄에 하나씩 입력하세요."
+                                oninput="autoResizeTextarea(this)"></textarea>
+                        </div>
                         <div id="regex-error" class="error" style="display:none;"></div>
 
                         <div class="group-section">
@@ -121,11 +134,11 @@
                         style="background: #fff0f0; border-color: #ffcccc; color: #e74c3c;">↺
                         원래대로</button>
                 </div>
-                <div style="display: flex; gap: 10px;">
-                    <button class="save-json-btn" onclick="document.getElementById('load-json-input').click()">
+                <div class="regex-file-actions">
+                    <button class="save-json-btn save-json-btn-secondary" onclick="document.getElementById('load-json-input').click()">
                         📂 파일 불러오기
                     </button>
-                    <button class="save-json-btn" style="background: var(--btn-1); color:#fff;" onclick="saveAsRegexJSON()">
+                    <button class="save-json-btn save-json-btn-primary" onclick="saveAsRegexJSON()">
                         💾 파일로 저장
                     </button>
                 </div>
@@ -140,6 +153,11 @@
                         <div class="modal-body">
                             <label for="script-name-input">파일 이름</label>
                             <input type="text" id="script-name-input" placeholder="예: 인포블럭 디자인" value="디자인1">
+
+                            <div id="save-regex-select-block" class="save-regex-select-block">
+                                <label>정규식 선택</label>
+                                <div id="save-regex-list" class="save-regex-list"></div>
+                            </div>
 
                             <div style="margin-top: 15px;">
                                 <label>영향을 미침</label>
@@ -190,20 +208,21 @@
                             <span class="notice-badge step-3">3</span>디자인을 입력하세요.<br>
                             <span class="notice-badge step-4">4</span>실시간으로 결과를 확인할 수 있습니다.
                             <hr>
+                            <span class="notice-badge step-5">✔</span>나눠진 정규식을 한 번에 확인할 수 있습니다.<br>
                             <span class="notice-badge step-5">✔</span>프리셋을 눌러서 미리보기.<br>
                             <span class="notice-badge step-5">✔</span>내용/캡쳐를 구분해서 볼 수 있습니다.<br>
                             <span class="notice-badge step-5">✔</span>입력창은 자동으로 늘어납니다.<br>
                             <hr>
                             <h3>📌 메모</h3>
                             <span class="note-item"></span>
-                            <span class="note-item">박스/내용이 별도인 정규식은 못봅니다. <font color=#999>(언젠간 할거임..)</font></span>
+                            <span class="note-item">박스,내용을 별도로 쓰고 싶다면 <font color="#5a7c6f">[+]</font>버튼으로 추가하세요.</span>
                             <span class="note-item">(주관주의) ST에서 디자인 오류 발생시
                                 <span class="note-item">주석처리<font color="#5a7c6f">(/*&nbsp;*/)</font>지워보기</span>
                                 <span class="note-item">큰따옴표<font color="#5a7c6f">("&nbsp;")</font>대신 작은따옴표<font
                                         color="#5a7c6f">('&nbsp;')</font>사용해보기</span>
                                 <span class="note-item">줄바꿈 없애보기</span>
                             </span>
-                            <div class="update">🔔 색상 미리보기 추가 / 테마&TXT파일 뷰어 이름 수정</div>
+                            <div class="update">🔔 정규식 여러개 지원(드디어...)</div>
                         </div>
                     </div>
                 </div>
@@ -217,9 +236,10 @@
     <!-- 공통 스크립트 -->
     <script src="js/theme.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/preview-sanitize.js"></script>
     <!-- 개별 스크립트 -->
     <script src="js/regex-presets.js"></script>
-    <script src="js/regex.js"></script>
+    <script src="js/regex.js?v=stage-tabs-20260625-4"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

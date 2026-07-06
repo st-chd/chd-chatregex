@@ -1,4 +1,4 @@
-/* ========== 메인 컨테이너 ========== */
+﻿/* ========== 硫붿씤 而⑦뀒?대꼫 ========== */
 .editor-container {
     width: var(--nav-width);
     margin: 0 auto;
@@ -10,7 +10,7 @@
     border-radius: 0 0 12px 12px;
 }
 
-/* ========== 섹션 ========== */
+/* ========== ?뱀뀡 ========== */
 .editor-section {
     background: var(--bg-primaty);
     border-radius: 12px;
@@ -38,12 +38,12 @@
     user-select: none;
 }
 
-/* ========== 파일 선택 ========== */
+/* ========== ?뚯씪 ?좏깮 ========== */
 .file-input {
     width: 100%;
     padding: 12px;
     background: var(--sub-header);
-    border: 2px solid var(--textarea-foucs-border);
+    border: 2px solid var(--textarea-focus-border);
     border-radius: 8px;
     font-size: 1.05em;
     cursor: pointer;
@@ -56,7 +56,7 @@
     color: var(--textarea-text);
 }
 
-/* ========== 검색 그룹 ========== */
+/* ========== 寃??洹몃９ ========== */
 .search-group {
     display: flex;
     gap: 10px;
@@ -75,7 +75,7 @@
 
 .search-input:focus {
     outline: none;
-    border-color: var(--textarea-foucs-border);
+    border-color: var(--textarea-focus-border);
     background: #ffffff;
 }
 
@@ -84,7 +84,7 @@
     gap: 5px;
 }
 
-/* ========== 바꾸기 박스 ========== */
+/* ========== 諛붽씀湲?諛뺤뒪 ========== */
 .replace-box {
     max-height: 0;
     overflow: hidden;
@@ -102,7 +102,7 @@
     flex-wrap: nowrap;
 }
 
-/* ========== 버튼 ========== */
+/* ========== 踰꾪듉 ========== */
 .btn {
     padding: 10px 16px;
     border: none;
@@ -155,7 +155,7 @@
     gap: 8px;
 }
 
-/* ========== CodeMirror 에디터 ========== */
+/* ========== CodeMirror ?먮뵒??========== */
 .editor-main {
     display: flex;
     flex-direction: column;
@@ -197,7 +197,7 @@
     color: white !important;
 }
 
-/* ========== 토스트 알림 ========== */
+/* ========== ?좎뒪???뚮┝ ========== */
 .toast {
     position: fixed;
     bottom: 20px;
@@ -232,7 +232,7 @@
     }
 }
 
-/* ========== 색상 편집기 ========== */
+/* ========== ?됱긽 ?몄쭛湲?========== */
 .color-editor-section {
     margin-top: 10px;
     padding: 10px;
@@ -298,14 +298,14 @@
     display: flex;
     gap: 4px;
     align-items: center;
-    flex: 3; /* 남은 공간 비율 */
+    flex: 3; /* ?⑥? 怨듦컙 鍮꾩쑉 */
 }
 
 .rgba-input-wrapper {
     display: flex;
     align-items: center;
     gap: 2px;
-    flex: 1; /* 각각의 입력칸이 균등한 넓이를 가지도록 설정 */
+    flex: 1; /* 媛곴컖???낅젰移몄씠 洹좊벑???볦씠瑜?媛吏?꾨줉 ?ㅼ젙 */
 }
 
 .rgba-label {
@@ -327,9 +327,9 @@
 
 .rgba-number-input:focus {
     outline: none;
-    border-color: var(--textarea-foucs-border);
+    border-color: var(--textarea-focus-border);
     background: #fff;
-    color: var(--textarea-foucs-border);
+    color: var(--textarea-focus-border);
 }
 
 .hex-input {
@@ -346,8 +346,8 @@
 .hex-input:focus {
     outline: none;
     background: #fff;
-    border-color: var(--textarea-foucs-border);
-    color: var(--textarea-foucs-border);
+    border-color: var(--textarea-focus-border);
+    color: var(--textarea-focus-border);
 }
 
 .color-actions {
@@ -357,7 +357,7 @@
     margin-top: 15px;
 }
 
-/* ========== 붙여넣기 모달 ========== */
+/* ========== 遺숈뿬?ｊ린 紐⑤떖 ========== */
 .paste-modal {
     display: none;
     position: fixed;
@@ -453,7 +453,7 @@
 
 .paste-textarea:focus {
     outline: none;
-    border-color: var(--textarea-foucs-border);
+    border-color: var(--textarea-focus-border);
 }
 
 .paste-modal-footer {
@@ -468,7 +468,7 @@
     color: #aaa;
     opacity: 0.6;
 }
-/* ========== 모바일 반응형 ========== */
+/* ========== 紐⑤컮??諛섏쓳??========== */
 @media (max-width: 1600px) {
     .color-grid {
         grid-template-columns: 1fr;
@@ -477,19 +477,19 @@
 
 @media (max-width: 900px) {
     .color-item {
-        flex-direction: row; /* 모바일에서도 가로 배치 기준 유지 */
+        flex-direction: row; /* 紐⑤컮?쇱뿉?쒕룄 媛濡?諛곗튂 湲곗? ?좎? */
         align-items: center;
         gap: 8px;
-        flex-wrap: wrap; /* 좁으면 줄바꿈 허용 */
+        flex-wrap: wrap; /* 醫곸쑝硫?以꾨컮轅??덉슜 */
     }
 
     .color-label {
-        width: 160px; /* 고정 넓이 유지 */
+        width: 160px; /* 怨좎젙 ?볦씠 ?좎? */
         flex-shrink: 0;
     }
 
     .color-controls {
-        flex: 1; /* 나머지 공간 차지 */
+        flex: 1; /* ?섎㉧吏 怨듦컙 李⑥? */
         min-width: 220px;
         flex-wrap: wrap;
     }

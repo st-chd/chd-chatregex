@@ -1,4 +1,4 @@
-/* ========== 프리셋 바 ========== */
+﻿/* ========== ?꾨━??諛?========== */
 .preset-bar {
     width: var(--nav-width);
     margin: 0 auto 10px;
@@ -46,7 +46,7 @@
     flex: 0 0 auto;
 }
 
-/* 공통 버튼 */
+/* 怨듯넻 踰꾪듉 */
 .preset-btn, .reset-btn, .mobile-tab {
     cursor: pointer;
     font-weight: bold;
@@ -73,7 +73,7 @@
     display: none;
 }
 
-/* ========== 메인 컨테이너 ========== */
+/* ========== 硫붿씤 而⑦뀒?대꼫 ========== */
 .container {
     height: auto;
     display: flex;
@@ -83,7 +83,7 @@
     margin: 0 auto;
 }
 
-/* 에디터 사이드 */
+/* ?먮뵒???ъ씠??*/
 .editor-side {
     width: 40%;
     display: flex;
@@ -117,7 +117,7 @@ label {
     letter-spacing: 0.5px;
 }
 
-/* 입력 필드 */
+/* ?낅젰 ?꾨뱶 */
 textarea, input {
     background: var(--textarea-bg);
     border: var(--pre-btn-border);
@@ -134,7 +134,7 @@ textarea {
 
 textarea:focus, input:focus {
     outline: none;
-    border-color: var(--textarea-foucs-border);
+    border-color: var(--textarea-focus-border);
     background: #ffffff;
 }
 
@@ -145,7 +145,7 @@ textarea:focus, input:focus {
     resize: vertical;
 }
 
-/* 버튼 */
+/* 踰꾪듉 */
 .copy-btn {
     cursor: pointer;
     background: var(--btn-1);
@@ -158,7 +158,7 @@ textarea:focus, input:focus {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* 찾기/바꾸기 */
+/* 李얘린/諛붽씀湲?*/
 .find-container {
     display: flex;
     gap: 5px;
@@ -197,7 +197,7 @@ textarea:focus, input:focus {
     opacity: 1;
 }
 
-/* ========== 변수 추출 섹션 ========== */
+/* ========== 蹂??異붿텧 ?뱀뀡 ========== */
 .group-section {
     border: var(--pre-btn-border);
     border-radius: 8px;
@@ -274,7 +274,7 @@ textarea:focus, input:focus {
     display: none;
 }
 
-/* ========== 프리뷰 사이드 ========== */
+/* ========== ?꾨━酉??ъ씠??========== */
 .preview-side {
     width: 60%;
     display: flex;
@@ -304,7 +304,7 @@ textarea:focus, input:focus {
     border: 1px solid rgba(231, 76, 60, 0.3);
 }
 
-/* ========== 코드미러 ========== */
+/* ========== 肄붾뱶誘몃윭 ========== */
 .CodeMirror {
     height: 300px;
     min-height: 300px;
@@ -323,7 +323,7 @@ textarea:focus, input:focus {
     background-color: #ff9800 !important;
 }
 
-/* ========== 리사이저 ========== */
+/* ========== 由ъ궗?댁? ========== */
 .resizer {
     width: 2px;
     background: var(--btn-bg);
@@ -337,7 +337,7 @@ textarea:focus, input:focus {
 }
 
 .resizer::before {
-    content: '⋮';
+    content: '??;
     font-size: 20px;
     background: var(--pre-btn-bg);
     color: var(--textarea-text);
@@ -346,14 +346,14 @@ textarea:focus, input:focus {
 }
 
 .resizer:hover {
-    background: var(--textarea-foucs-border);
+    background: var(--textarea-focus-border);
 }
 
 .resizer:active::before {
     transform: scale(1.1);
 }
 
-/* ========== 안내문 ========== */
+/* ========== ?덈궡臾?========== */
 .notice-box {
     background: #FAFBF7;
     border-radius: 12px;
@@ -393,7 +393,7 @@ textarea:focus, input:focus {
 .step-4 { background: #1dd1a1; }
 .step-5 { background: #ff6b6b; }
 
-/* ========== 반응형 ========== */
+/* ========== 諛섏쓳??========== */
 @media (max-width: 1024px) {
     .editor-side { width: 45%; }
     .preview-side { width: 55%; }

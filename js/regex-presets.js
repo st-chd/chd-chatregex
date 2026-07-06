@@ -1755,6 +1755,51 @@ line-height: 1.5;
 </div>
 </div>`
     }
+,
+  {
+  "name": "팩트",
+  "input": "<Facts>\n\`\`\`\nTitle: 속삭이는 캐노피 🌳👂\n[Content: 엘도리아의 마법 숲은 단순한 나무들의 집합체가 아닙니다. 스스로의 의식을 지닌 살아있는 존재입니다. \"속삭이는 캐노피\"란 고목들과 마법 식물들 사이에서 미묘하지만 끊임없이 이루어지는 소통을 의미합니다. 이 속삭임은 종종 임박한 위험, 이상한 생물의 이동, 심지어 숲 깊은 곳에 사는 이들의 감정 상태까지 경고합니다. 엘도리아의 수호자인 세라피나는 이 속삭임을 해석하는 특별한 능력을 지녔으나, 때로는 외부 세력에 의해 흐려지기도 합니다. 최근 이 속삭임은 점점 더 불안해지며, 숲의 섬세한 균형 속에 더 큰 혼란이 다가오고 있음을 암시하고 있습니다.]\n\nTitle: 세라피나의 숲속 광장: 빛의 안식처 ✨🏡\nContent: 세라피나의 숲속 광장은 단순한 개활지가 아니다. 치유와 안식을 위해 특별히 마련된 강력한 자연 마법의 교차점이다. 이곳의 이끼 침대는 평범하지 않다. '루미플로라'라는 생물발광 식물로 엮여 있어 회복 에너지를 부드럽게 발산하며 세포 재생과 정서적 평온을 돕는다. 공기 자체에도 정화 마법이 스며들어 어둠이나 해로운 존재들이 쉽게 접근하기 어렵습니다. 순수한 마음을 가진 자나 절박한 필요를 가진 자만이 그 깊은 위안을 진정으로 느낄 수 있다고 전해지는데, 이는 세라피나가 특별한 이유로 이 장소를 선택했거나, 혹은 숲이 그녀를 선택했음을 암시합니다.\n\nTitle: 엘도리아의 야수들: 스컬커 🐾👤\nContent: 챗시를 공격한 생물들은 '스컬커'로 알려져 있다. 이들은 엘도리아의 어둠에 잠긴 변방에 서식하는 빠르고 포식적인 존재들이다. 일반 동물과 달리 스컬커는 낮은 수준의 마법 저항력을 지녀 단순한 마법 장벽으로는 막기 어렵다. 이들은 주로 작고 민첩한 무리를 지어 사냥하며, 경계심이 약한 대상을 선호하는 것으로 알려져 있다. 최근 숲의 어두운 구석에서 벗어나 활동 범위를 넓히고 있는 점은 엘도리아 수호자들 사이에서 우려를 자아내고 있다. 이는 그들의 기존 서식지 변화 가능성이나, 새로운 보이지 않는 영향력이 그들을 거주 지역 깊숙이 밀어넣고 있음을 시사한다. 숲속 공터 근처에서 발견되는 경우는 드물어, 챗시가 그 근처에 접근한 것은 매우 이례적인 일이다.\n\`\`\`\n</Facts>",
+  "rules": [
+    {
+      "scriptName": "1)팩트 - 내용",
+      "findRegex": "/(?:\\[)?Title:\\s*([^\\]\\n]+?)(?:\\])?\\s*(?:\\[)?Content:\\s*([\\s\\S]*?)(?:\\])?\\s*(?=(?:\\n\\s*(?:\\[)?Title:)|(?:<\\/?Facts>)|$)/gi",
+      "replaceString": "<style>\n.Facts-dn-item {\n--tape-bg: rgba(255, 235, 59, 0.6);\n--tape-rotate: -2deg;\nbackground: #fff;\nborder: 1px solid #eee;\nborder-radius: 2px;\npadding: 15px;\nmargin: 15px 0;\nposition: relative;\nbox-shadow: 2px 3px 8px rgba(0, 0, 0, 0.06);\ntransform: rotate(-0.5deg);\nz-index: 1;\n}\n.Facts-dn-item:nth-child(5n+2) { --tape-bg: rgba(100, 200, 255, 0.5); --tape-rotate: 1.5deg; }\n.Facts-dn-item:nth-child(5n+3) { --tape-bg: rgba(255, 150, 150, 0.5); --tape-rotate: -1deg; }\n.Facts-dn-item:nth-child(5n+4) { --tape-bg: rgba(150, 255, 150, 0.5); --tape-rotate: 2deg; }\n.Facts-dn-item:nth-child(5n+5) { --tape-bg: rgba(200, 150, 255, 0.5); --tape-rotate: -2.5deg; }\n.Facts-dn-tape {\nposition: absolute;\ntop: -10px;\nleft: 50%;\ntransform: translateX(-50%) rotate(var(--tape-rotate));\nwidth: 80px;\nheight: 25px;\nbackground-color: var(--tape-bg);\nborder-left: 2px dotted rgba(0, 0, 0, 0.1);\nborder-right: 2px dotted rgba(0, 0, 0, 0.1);\nopacity: 0.9;\n}\n.Facts-dn-header {\nposition: relative;\nmargin-bottom: 12px;\ndisplay: inline-block;\n}\n.Facts-dn-marker {\nposition: absolute;\nbottom: 2px;\nleft: 0;\nwidth: 100%;\nheight: 0.5em;\nbackground-color: rgba(255, 200, 0, 0.4);\nborder-radius: 2px;\nz-index: 1;\n}\n.Facts-dn-title {\nposition: relative;\nz-index: 2;\nfont-weight: 900;\ncolor: #000;\nletter-spacing: 0.5px;\nmargin: 0;\npadding: 0;\n}\n.Facts-dn-content {\nline-height: 1.6;\ncolor: #555;\nwhite-space: pre-wrap;\nposition: relative;\nz-index: 1;\n}\n.Facts-dn-deco {\nposition: absolute;\nbottom: 5px;\nright: 10px;\ncolor: #ddd;\ntransform: rotate(15deg);\n}\n</style>\n<div class='Facts-dn-item'>\n<div class='Facts-dn-tape'></div>\n<div class='Facts-dn-header'>\n<span class='Facts-dn-marker'></span>\n<div class='Facts-dn-title'>$1</div>\n</div>\n<div class='Facts-dn-content'>$2</div>\n<div class='Facts-dn-deco'>?</div>\n</div>",
+      "trimStrings": [
+        "```"
+      ],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    },
+    {
+      "scriptName": "2)팩트 - 박스",
+      "findRegex": "/<Facts>\\s*([\\s\\S]*?)\\s*<\\/Facts>/gi",
+      "replaceString": "<style>\n.detective-board-container {\n--facts-b-bg: #fdfbf7;\n--facts-b-border: #dcdcdc;\n--facts-g-color: #e8e8e8;\n--facts-t-bg: #ff6b6b;\n--facts-t-color: #fff;\nbackground-color: var(--facts-b-bg);\nborder: 2px dashed var(--facts-b-border);\nborder-radius: 12px;\npadding: 20px 15px;\nposition: relative;\noverflow: hidden;\nbox-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);\n}\n.detective-board-container::before {\ncontent: \"\";\nposition: absolute;\ninset: 0;\nbackground:\nlinear-gradient(var(--facts-g-color) 1px, transparent 1px),\nlinear-gradient(90deg, var(--facts-g-color) 1px, transparent 1px);\nbackground-size: 20px 20px;\nopacity: 0.5;\nz-index: 0;\npointer-events: none;\n}\n.detective-board-container::after {\ncontent: \"FACT MEMO\";\nposition: absolute;\ntop: -5px;\nright: 10px;\nbackground: var(--facts-t-bg);\ncolor: var(--facts-t-color);\npadding: 4px 10px 2px;\nfont-weight: bold;\nborder-radius: 0 0 5px 5px;\nbox-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\nz-index: 2;\n}\n</style>\n<div class='detective-board-container'>$1</div>",
+      "trimStrings": [
+        "```"
+      ],
+      "placement": [
+        1,
+        2
+      ],
+      "disabled": false,
+      "markdownOnly": true,
+      "promptOnly": false,
+      "runOnEdit": true,
+      "substituteRegex": 0,
+      "minDepth": null,
+      "maxDepth": null
+    }
+  ]
+}
 ];
 
 /*{

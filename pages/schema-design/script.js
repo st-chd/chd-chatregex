@@ -191,10 +191,13 @@ function updateVariableDisplay(extractedVars) {
         
         const item = document.createElement('div');
         item.className = 'variable-item';
-        item.innerHTML = `
-            <code title="{{${path}}}">{{${path}}}</code>
-            <span class="variable-value">${count}개</span>
-        `;
+        const code = document.createElement('code');
+        code.title = `{{${path}}}`;
+        code.textContent = `{{${path}}}`;
+        const valueLabel = document.createElement('span');
+        valueLabel.className = 'variable-value';
+        valueLabel.textContent = `${count}개`;
+        item.append(code, valueLabel);
         listEl.appendChild(item);
     });
     
@@ -493,7 +496,7 @@ function render() {
         const schema = JSON.parse(schemaText);
         const compiledTemplate = Handlebars.compile(template);
         const html = compiledTemplate({ data: schema });
-        window.renderTarget.innerHTML = html;
+        window.renderTarget.innerHTML = window.sanitizePreviewHtml(html);
     } catch (e) {
         window.renderError.style.display = 'block';
         window.renderError.innerText = '오류: ' + e.message;

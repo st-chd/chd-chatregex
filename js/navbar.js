@@ -18,6 +18,7 @@ const TOOLS_DATA = [
                         <li>기존 정규식 파일을 불러와 수정하거나 새로 저장할 수 있습니다.</li>
                         <li>내용보기/캡쳐보기 버튼으로 캡쳐 위치를 보기 쉽게 확인할 수 있습니다.</li>
                         <li>입력창은 [+칸 늘리기]버튼으로 쉽게 늘릴 수 있습니다.</li>
+                        <li>박스,내용을 별도로 쓰고 싶다면 [+]버튼으로 추가하세요.</li>
                       </ul>
                       <hr style="margin: 15px 0;">
                       <p><strong>📌 메모</strong></p>
@@ -68,79 +69,33 @@ const TOOLS_DATA = [
                         <li>실시간으로 결과를 확인할 수 있습니다.</li>
                       </ol>`
     }
-    /* {
-        title: "텍스트 비교",
-        path: "pages/Text-Comparison/index.html",
-        helpTitle: "📝 텍스트 비교",
-        helpDescription: "두 텍스트를 입력하면 추가·삭제된 부분을 글자/줄 단위로 비교하여 보여줍니다.",
-        helpContent: `<p>서로 다른 두 개의 텍스트를 글자, 또는 줄 단위로 변경사항을 확인할 수 있습니다.</p>
-                      <p>(옵션 체크시)서로 다른 두 개의 텍스트에서 일치하는 문장을 찾을 수 있습니다.</p>
-                      <hr style="margin: 15px 0;">
-                      <p><strong>💡 사용 방법</strong></p>
-                      <ol>
-                        <li>기준이 되는 텍스트를 왼쪽에 입력하세요.</li>
-                        <li>비교할 텍스트를 오른쪽에 입력하세요.</li>
-                      </ol>
-                      <ul>
-                        <li>두 텍스트에서 일치하는 문장을 찾고 싶다면 [일치하는 문장찾기]에 체크하세요.</li>
-                        <li>텍스트의 변경사항을 확인하고 싶다면 [비교하기]를 누르세요.</li>
-                      </ul>`
-    },
-     {
-        title: "토큰 계산기",
-        path: "pages/token-calculator/index.html",
-        helpTitle: "🪙 토큰 계산기",
-        helpDescription: "입력 텍스트의 토큰 수를 추정하고, Gemini API 비용을 비교합니다.",
-        helpContent: `...`
-    },
-    {
-        title: "로어북 편집기",
-        path: "pages/Lorebook-editor/index.html",
-        helpTitle: "📖 로어북 편집기",
-        helpDescription: "Silly Tavern용 다중 로어북 편집, 파싱 및 대량 편집 도구입니다.",
-        helpContent: `<p>로어북을 불러와 (개별/일괄)편집할 수 있습니다.</p>
-                      <p>로어북 키워드를 한번에 변경할 수 있습니다.</p>
-                      <p>스크립트형식을 ST에서 사용하는 로어북 형식으로 변환할 수 있습니다.</p>
-                      <hr style="margin: 15px 0;">
-                      <p><strong>💡 사용 방법</strong></p>
-                      <ol>
-                        <li>로어북을 불러오세요. 한번에 여러개를 불러올 수 있습니다.</li>
-                        <li>왼쪽화면에서 로어북 항목을 확인하고, 오른쪽 화면에서 로어북 내용을 편집할 수 있습니다.</li>
-                        <li>항목 순서를 바꾸고 싶을땐 아래 방법 중 1개를 선택하세요.
-                          <ul>
-                            <li>왼쪽 항목에서 드래그 앤 드롭으로 위치를 바꾸세요.</li>
-                            <li>왼쪽 항목 [선택 모드]에서 [이동/복사]버튼을 눌러 바꾸세요.</li>
-                            <li>오른쪽 화면에서 순서를 입력해서 바꾸세요.</li>
-                          </ul>
-                        </li>
-                        <li>[선택 모드]를 누르면 여러 항목을 한번에 변경할 수 있습니다.
-                          <ul>
-                            <li>[일괄 편집] 버튼을 누르면 [스캔 깊이], [단어 일치], [대소문자 구분]설정을 바꿀 수 있습니다.</li>
-                            <li>[일괄 편집] 버튼을 누르면 [제목/키워드/내용]에 있는 텍스트를 찾아 바꿀 수 있습니다.(찾아 바꾸기 기능)</li>
-                            <li>[이동/복사] 버튼을 누르면 순서를 한번에 변경하거나, 선택된 항목을 다른 로어북으로 이동할 수 있습니다.</li>
-                            <li>[삭제] 버튼을 누르면 한 번에 삭제할 수 있습니다.</li>
-                          </ul>
-                        </li>
-                        <li>[번역/변환] 버튼을 누르면 키워드를 한번에 변경하거나 스크립트 파일을 로어북으로 변환할 수 있습니다.
-                          <ul>
-                            <li><strong>[키워드 번역]</strong> 탭에서는 로어북에 들어간 항목을 일괄적으로 불러와 바꿀 수 있습니다.
-                              <ul>
-                                <li><strong>[일괄 변경]</strong> 탭에서는 여러 항목을 복사/붙여넣기로 변경할 수 있습니다. (원본 키워드 복사 → 번역기 사용 → 결과 붙여넣기)</li>
-                                <li>[일괄 변경] 항목이 너무 많다면 100개씩 끊어보기가 가능합니다.</li>
-                                <li><strong>[수동 입력]</strong> 탭에서는 키워드를 하나씩 개별적으로 입력할 수 있습니다.</li>
-                              </ul>
-                            </li>
-                            <li><strong>[스크립트 변환]</strong> 탭에서는 스크립트를 붙여넣으면 로어북 형식으로 변환할 수 있습니다.
-                              <ul>
-                                <li><strong>[파일 저장]</strong> 버튼으로 곧바로 저장할 수 있습니다.</li>
-                                <li><strong>[편집기에 열기]</strong> 버튼으로 현재 화면으로 불러와 내용을 먼저 확인할 수 있습니다.</li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ol>`
-    }*/
 ];
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[char]));
+}
+
+function escapeAttribute(value) {
+    return escapeHtml(value).replace(/`/g, '&#96;');
+}
+
+function getNavbarBasePath() {
+    const scriptTag = document.querySelector('script[src$="navbar.js"], script[src*="navbar.js?"]');
+    if (!scriptTag) return '';
+
+    const src = (scriptTag.getAttribute('src') || '').replace(/[?#].*$/, '');
+    return src.replace(/js\/navbar\.js$/, '');
+}
+
+function getMenuTools() {
+    return TOOLS_DATA.filter(tool => tool.showInMenu !== false);
+}
 
 class NavbarManager {
     constructor() {
@@ -201,7 +156,7 @@ class NavbarManager {
             });
 
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && this.helpModal.style.display === 'block') {
+                if (e.key === 'Escape' && this.helpModal.style.display !== 'none') {
                     this.helpModal.style.display = 'none';
                 }
             });
@@ -233,12 +188,7 @@ class NavbarManager {
 
     injectDropdownAndModal() {
         // 경로 기준 찾기
-        const scriptTag = document.querySelector('script[src$="navbar.js"]');
-        let basePath = "";
-        if (scriptTag) {
-            const src = scriptTag.getAttribute('src');
-            basePath = src.replace('js/navbar.js', '');
-        }
+        const basePath = getNavbarBasePath();
 
         // 현재 페이지 타이틀 가져오기
         let currentToolTitle = "";
@@ -255,8 +205,8 @@ class NavbarManager {
         }
         
         let dropdownHTML = '';
-        TOOLS_DATA.forEach(tool => {
-            dropdownHTML += `<a href="${basePath}${tool.path}" data-title="${tool.title}">${tool.title}</a>`;
+        getMenuTools().forEach(tool => {
+            dropdownHTML += `<a href="${escapeAttribute(basePath + tool.path)}" data-title="${escapeAttribute(tool.title)}">${escapeHtml(tool.title)}</a>`;
         });
         dropdownContent.innerHTML = dropdownHTML;
 
@@ -264,8 +214,8 @@ class NavbarManager {
         const currentToolData = TOOLS_DATA.find(t => t.title === currentToolTitle) || TOOLS_DATA[0];
 
         let toolsListHTML = '<ul>';
-        TOOLS_DATA.forEach(tool => {
-            toolsListHTML += `<li><strong>${tool.title}:</strong> ${tool.helpDescription}</li>`;
+        getMenuTools().forEach(tool => {
+            toolsListHTML += `<li><strong>${escapeHtml(tool.title)}:</strong> ${escapeHtml(tool.helpDescription)}</li>`;
         });
         toolsListHTML += '</ul>';
 
@@ -282,8 +232,8 @@ class NavbarManager {
 
                 <!-- 현재 도구 탭 -->
                 <div class="modal-tab-content active" id="tab-current">
-                    <h3>${currentToolData.helpTitle}</h3>
-                    ${currentToolData.helpContent.replace(/{basePath}/g, basePath)}
+                    <h3>${escapeHtml(currentToolData.helpTitle)}</h3>
+                    ${currentToolData.helpContent.replace(/{basePath}/g, escapeAttribute(basePath))}
                 </div>
 
                 <!-- 도구 목록 탭 -->
